@@ -1,5 +1,9 @@
 # Space Explorer Website
 
+
+![Space photo](https://apod.nasa.gov/apod/image/2503/ThorHelmet_Hopkins_3888.jpg)
+
+
 ## Overview
 
 Space Explorer is an informative website that provides users with up-to-date information about space using data from NASA's API and The Space Devs API. The website offers insights into celestial bodies, upcoming space missions, and the latest space-related news.
