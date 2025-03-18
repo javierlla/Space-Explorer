@@ -1,9 +1,6 @@
 import { Article, Event, Astronaut, Image, Launches, ImageOfTheDay} from './clases/clases.js';
 
-function toggleMenu() {
-    const navLinks = document.querySelector('.nav-links');
-    navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
-}
+
 
 /* 
 
@@ -42,8 +39,6 @@ async function createImageOfTheDay() {
     return imageOTD;
 }
 
-
-
 async function searchForImages(query) {
     const response = await fetch(`https://images-api.nasa.gov/search?q=${query}`);
     const data = await response.json();
@@ -53,6 +48,8 @@ async function searchForImages(query) {
     const imageLinks = items
     .map(item => item.links?.[0]?.href)
     .filter(link => link);
+
+    let imageClases = [];
     
     for (let i = 0; i < imageLinks.length; i++) {
         let newImage = new Image(imageLinks[i]);

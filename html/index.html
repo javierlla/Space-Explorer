@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SpaceExplorer</title>
     <link rel="stylesheet" href="../css/style.css">
-    <script defer src="../javascript/main.js"></script>
 </head>
 <body>
 
@@ -39,5 +38,10 @@
         </div>
     </footer>
 
+    <script defer type="module" src="../javascript/main.js"></script>
+    <script>function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
+    }</script>
 </body>
 </html>
