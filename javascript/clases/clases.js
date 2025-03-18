@@ -11,6 +11,15 @@ class Article {
         this.summary = summary
         this.published_at = published_at
     }
+
+    print_everything()
+    {
+        console.log(`ID: ${this.id}`);
+        console.log(`Title: ${this.title}`);
+        console.log(`Authors: ${this.authors || "N/A"}`);
+        console.log(`URL: ${this.url}`);
+        console.log(`Image URL: ${this.image_url}`);
+    }
 }
 
 class Launches {
