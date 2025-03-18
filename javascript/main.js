@@ -1,4 +1,6 @@
 import { Article, Event, Astronaut, Image, Launches, ImageOfTheDay} from './clases/clases.js';
+// Importar la función del main-content para meterle la instancia de Objeto desde aqui
+import { displayImageOfTheDay } from './main-content.js';
 
 function toggleMenu() {
     const navLinks = document.querySelector('.nav-links');
@@ -63,15 +65,12 @@ async function searchForImages(query) {
 }
 
 
-async function main(){
-    const images = await searchForImages("space");
+async function main() {
     const articleClasses = await createArticles();
     const imageOTD = await createImageOfTheDay();
-
-
-    let article = articleClasses[0];
-    article.print_everything();
     
+     // Usar la función importada para agregar el contenido dinámicamente metiendole el return de la funcion de la API
+     displayImageOfTheDay(imageOTD);
 }
 
 main()

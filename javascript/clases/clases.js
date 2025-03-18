@@ -47,4 +47,8 @@ class ImageOfTheDay{
         this.title = title
         this.url = url
     }
+    printImage() {
+        console.log(`${this.title}: ${this.explanation}`);
+        console.log(`Image URL: ${this.url}`);
+    }
 }
