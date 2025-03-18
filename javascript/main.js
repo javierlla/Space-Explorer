@@ -32,10 +32,8 @@ async function datosApiClases() {
         const data1 = await response1.json();
         const image = data1;
 
-        // console.log(image)
-        createImageOfTheDay(image)
+        createImageOfTheDay(image);
 
-        
       } catch (error) {
         console.error(error);
       }
@@ -63,7 +61,34 @@ function createImageOfTheDay(image) {
     
     let imageOTD = new ImageOfTheDay(image.date, image.explanation, image.title, image.url)
 
-    console.log(imageOTD)
+    // console.log(imageOTD)
 }
 
-datosApiClases()
+// datosApiClases();
+
+
+async function searchForImages(query) {
+    const response = await fetch(`https://images-api.nasa.gov/search?q=${query}`);
+    const data = await response.json();
+
+    // Access items array
+    const items = data.collection.items;
+
+    // Extract image URLs
+
+    let imageClases = [];
+
+    const imageLinks = items
+        .map(item => item.links?.[0]?.href) // Get the first image link if it exists
+        .filter(link => link); // Remove undefined values
+        
+    for (let i = 0; i < imageLinks.length; i++) {
+        // console.log(imageLinks[i])
+        let newImage = new Image(imageLinks[i]);
+
+        imageClases.push(newImage);
+    }
+
+}
+
+searchForImages("space");

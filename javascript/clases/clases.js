@@ -26,7 +26,9 @@ class Astronaut {
 }
 
 class Image{
-
+    constructor(url) {
+        this.url = url
+    }
 }
 
 class ImageOfTheDay{
