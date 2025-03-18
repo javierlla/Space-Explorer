@@ -1,8 +1,5 @@
 import { Article, Event, Astronaut, Image, Launches, ImageOfTheDay} from './clases/clases.js';
 
-// let articlesClasses = [];
-let imageClases = [];
-
 function toggleMenu() {
     const navLinks = document.querySelector('.nav-links');
     navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
@@ -16,28 +13,6 @@ los voy a meter en las clases que he importado desde ./clases/clases.js
 */
 
 const API_KEY = 'iHU6CXT2jGDVr9hMpRdhV1Bgn7BJiShISxKrqBGv';
-
-// async function datosApiClases() {
-
-//     //Primero voy a hacer un fetch a articles de: https://api.spaceflightnewsapi.net/v4/articles/
-
-//     try {
-//         // const response = await fetch('https://api.spaceflightnewsapi.net/v4/articles/');
-//         // const data = await response.json();
-//         // const articles = data.results;
-
-//         // createArticles(articles)
-
-//         //Nasa Image of the day api endpoint
-
-  
-
-
-//       } catch (error) {
-//         console.error(error);
-//       }
-    
-// }
 
 async function createArticles() {
 
@@ -64,7 +39,6 @@ async function createImageOfTheDay() {
 
     let imageOTD = new ImageOfTheDay(image.date, image.explanation, image.title, image.url)
 
-    // console.log(imageOTD)
     return imageOTD;
 }
 
@@ -74,11 +48,8 @@ async function searchForImages(query) {
     const response = await fetch(`https://images-api.nasa.gov/search?q=${query}`);
     const data = await response.json();
 
-    // Access items array
     const items = data.collection.items;
-    
-    // Extract image URLs
-    
+        
     const imageLinks = items
     .map(item => item.links?.[0]?.href)
     .filter(link => link);
