@@ -17,27 +17,27 @@ los voy a meter en las clases que he importado desde ./clases/clases.js
 
 const API_KEY = 'iHU6CXT2jGDVr9hMpRdhV1Bgn7BJiShISxKrqBGv';
 
-async function datosApiClases() {
+// async function datosApiClases() {
 
-    //Primero voy a hacer un fetch a articles de: https://api.spaceflightnewsapi.net/v4/articles/
+//     //Primero voy a hacer un fetch a articles de: https://api.spaceflightnewsapi.net/v4/articles/
 
-    try {
-        // const response = await fetch('https://api.spaceflightnewsapi.net/v4/articles/');
-        // const data = await response.json();
-        // const articles = data.results;
+//     try {
+//         // const response = await fetch('https://api.spaceflightnewsapi.net/v4/articles/');
+//         // const data = await response.json();
+//         // const articles = data.results;
 
-        // createArticles(articles)
+//         // createArticles(articles)
 
-        //Nasa Image of the day api endpoint
+//         //Nasa Image of the day api endpoint
 
   
 
 
-      } catch (error) {
-        console.error(error);
-      }
+//       } catch (error) {
+//         console.error(error);
+//       }
     
-}
+// }
 
 async function createArticles() {
 
@@ -87,19 +87,19 @@ async function searchForImages(query) {
         let newImage = new Image(imageLinks[i]);
         
         imageClases.push(newImage);
-    } 
+    }
+    return imageClases;
 }
 
 
 async function main(){
-    // searchForImages("space");
+    const images = await searchForImages("space");
     const articleClasses = await createArticles();
-    // createImageOfTheDay();
+    const imageOTD = await createImageOfTheDay();
 
 
     let article = articleClasses[0];
     article.print_everything();
-    // console.log(articleClasses)
     
 }
 
