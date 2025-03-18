@@ -1,7 +1,5 @@
 import { Article, Event, Astronaut, Image, Launches, ImageOfTheDay} from './clases/clases.js';
 
-
-
 /* 
 
 Aqui abajo es donde voy a pillar los datos de la api y 
@@ -59,11 +57,30 @@ async function searchForImages(query) {
     return imageClases;
 }
 
+function createMainDom(imageOTD) {
+    document.addEventListener("DOMContentLoaded", function() {
+
+        function createTitle(){
+            const main = document.getElementById('main')
+    
+            const title = document.createElement('h1');
+            title.textContent = 'Welcome to Space Explorer';
+    
+            const image = document.createElement('img');
+            image.src = imageOTD.url;
+    
+            main.appendChild(title);
+        }
+    
+        createTitle();
+    });
+}
 
 async function main(){
+    const imageOTD = await createImageOfTheDay();
+    createMainDom(imageOTD);
     const images = await searchForImages("space");
     const articleClasses = await createArticles();
-    const imageOTD = await createImageOfTheDay();
 
 
     let article = articleClasses[0];
