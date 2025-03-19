@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const p = document.createElement('p');
         p.textContent = '© 2025 SpaceExplorer. All rights reserved.';
 
-        // Crear los enlaces sociales
         const socialIconsDiv = document.createElement('div');
         socialIconsDiv.classList.add('social-icons');
 
