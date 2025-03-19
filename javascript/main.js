@@ -58,7 +58,6 @@ async function searchForImages(query) {
 }
 
 function createMainDom(imageOTD) {
-    document.addEventListener("DOMContentLoaded", function() {
 
         function createTitle(){
             const main = document.getElementById('main')
@@ -67,25 +66,42 @@ function createMainDom(imageOTD) {
             title.textContent = 'Welcome to Space Explorer';
     
             const image = document.createElement('img');
+            console.log(imageOTD.url)
             image.src = imageOTD.url;
+            image.height = 600;
+            image.width = 600;
     
             main.appendChild(title);
+            main.appendChild(image);
         }
     
         createTitle();
-    });
 }
+
+function createImagesDom(images){
+
+}
+
+function createMainArticles() {
+
+}
+
+// function createImagesDom(images) {
+    
+//     function createImages() {
+//         const 
+//     }
+// }
 
 async function main(){
     const imageOTD = await createImageOfTheDay();
+    console.log(imageOTD.url)
     createMainDom(imageOTD);
     const images = await searchForImages("space");
+    createImagesDom(images);
+
     const articleClasses = await createArticles();
-
-
-    let article = articleClasses[0];
-    article.print_everything();
     
 }
 
-main()
+main();
