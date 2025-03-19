@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function() {
             { name: 'Twitter', href: '#' }
         ];
 
-        // Crear los enlaces sociales dinámicamente
         socialLinks.forEach(link => {
             const a = document.createElement('a');
             a.href = link.href;
@@ -28,11 +27,9 @@ document.addEventListener("DOMContentLoaded", function() {
             socialIconsDiv.appendChild(a);
         });
 
-        // Agregar el contenido al footer
         footer.appendChild(p);
         footer.appendChild(socialIconsDiv);
     }
 
-    // Llamar a la función para crear el footer
     createFooter();
 });
