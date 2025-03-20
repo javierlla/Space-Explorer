@@ -81,42 +81,41 @@ nav {
     font-size: 16px;
 }
 
-/* Estilos para la imagen del día */
-.api-image {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    margin-top: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#main-content{
+/* Contenedor de las imágenes */
+.images-container-wrapper {
     display: flex;
     overflow: hidden;
+    width: 100%;
 }
 
-/* Animación para mover las imágenes de izquierda a derecha */
+.images-container {
+    margin-top: 5%;
+    display: flex;
+    flex-wrap: nowrap;
+    animation: moveLeftToRight 360s linear infinite;
+}
+
+.images-container img{
+    width: 400px;
+    height: 550px;
+}
+
+/* Estilo para las imágenes */
+.api-image {
+    width: 200px;           
+    height: auto;           
+    margin-right: 10px;     
+}
+
+/* Animación para mover el contenedor de imágenes */
 @keyframes moveLeftToRight {
     0% {
-      transform: translateX(-100%); 
+        transform: translateX(0);
     }
     100% {
-      transform: translateX(100%);  
+        transform: translateX(-100%);
     }
-  }
-  
-  /* Estilo para las imágenes */
-  .api-image {
-    width: 200px; 
-    height: auto; 
-    display: inline-block;  
-    margin-right: 20px;  
-    animation: moveLeftToRight 10s linear infinite; 
-    object-fit: cover;  
-  }
-
+}
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {

@@ -1,4 +1,4 @@
-import { Article, Event, Image, Launches, ImageOfTheDay } from './clases/clases.js';
+import { Image } from './clases/clases.js';
 
 async function searchForImages(query) {
     const response = await fetch(`https://images-api.nasa.gov/search?q=${query}`);
@@ -6,24 +6,20 @@ async function searchForImages(query) {
 
     const items = data.collection.items;
     
-    // Obtener solo los enlaces de las imágenes
     const imageLinks = items
-        .map(item => item.links?.[0]?.href) // Acceder al primer enlace de cada item
-        .filter(link => link); // Filtrar los enlaces vacíos
+        .map(item => item.links?.[0]?.href)
+        .filter(link => link);
 
     let imageClases = [];
-
-    // Crear las instancias de la clase Image para cada enlace
+    
     for (let i = 0; i < imageLinks.length; i++) {
-        let newImage = new Image(imageLinks[i]); // Crear objeto Image con la URL
-        imageClases.push(newImage); // Agregarlo al arreglo
+        let newImage = new Image(imageLinks[i]);
+        imageClases.push(newImage);
     }
-
     return imageClases;
 }
 
 function createImagesDom(images) {
-    // Obtener el contenedor donde se va a agregar la imagen
     const mainContent = document.getElementById('main-images');
     
     // Si no se encuentra el contenedor, mostramos un error
@@ -32,21 +28,35 @@ function createImagesDom(images) {
         return;
     }
 
-    // Iterar sobre el arreglo de imágenes y agregar cada imagen al DOM
+    // Crear el contenedor de imágenes
+    const imagesContainerWrapper = document.createElement('div');
+    imagesContainerWrapper.classList.add('images-container-wrapper');  // Contenedor principal
+
+    const imagesContainer = document.createElement('div');
+    imagesContainer.classList.add('images-container');  // Contenedor de las imágenes
+
+    // Iterar sobre las imágenes y agregarlas al DOM
     images.forEach(image => {
         const imgElement = document.createElement('img');
-        imgElement.src = image.url; 
-        imgElement.classList.add('api-image');
-        mainContent.appendChild(imgElement);
-
+        imgElement.src = image.url;
+        imgElement.alt = "Imagen del espacio";
+        imgElement.classList.add('api-image');  
+        imagesContainer.appendChild(imgElement);
     });
+
+    // Duplicar el contenedor de imágenes para crear el bucle continuo
+    const duplicatedImagesContainer = imagesContainer.cloneNode(true); 
+
+    // Agregamos ambas partes (original y duplicada) al contenedor principal
+    imagesContainerWrapper.appendChild(imagesContainer);
+    imagesContainerWrapper.appendChild(duplicatedImagesContainer);
+
+    // Agregar el contenedor de las imágenes al main
+    mainContent.appendChild(imagesContainerWrapper);
 }
 
 async function main() {
-    
     const images = await searchForImages("space");
-    
-    // Llamar a la función que crea el contenido en el DOM
     createImagesDom(images);
 }
 
