@@ -1,4 +1,4 @@
-import { Article, Event, Astronaut, Image, Launches, ImageOfTheDay} from './clases/clases.js';
+import { Article, Event, Image, Launches, ImageOfTheDay} from './clases/clases.js';
 
 const API_KEY = 'iHU6CXT2jGDVr9hMpRdhV1Bgn7BJiShISxKrqBGv';
 
@@ -36,7 +36,6 @@ function createIndexMainDom(imageOTD) {
 }
 
 async function main(){
-    console.log("ENTRAAAAA")
     const imageOTD = await getImageOfTheDay();
     createIndexMainDom(imageOTD);
     

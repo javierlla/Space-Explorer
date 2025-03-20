@@ -1,4 +1,4 @@
-import { Article, Event, Astronaut, Image, Launches, ImageOfTheDay} from './clases/clases.js';
+import { Article, Event, Image, Launches, ImageOfTheDay} from './clases/clases.js';
 
 async function createArticles() {
 
