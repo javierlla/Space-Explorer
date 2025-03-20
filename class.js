@@ -18,14 +18,16 @@ class ImageOfTheDay{
     }
 }
 
-class Rockets{
-    constructor(name, explination, active, costPerLaunch, firstFlight
+class Rocket{
+    constructor(name, explanation, active, costPerLaunch, firstFlight
     ){
         this.name = name;
-        this.explanation = explination;
+        this.explanation = explanation;
         this.active = active;
         this.costPerLaunch = costPerLaunch;
         this.firstFlight = firstFlight;
+
+
     }
 
     displayInfo() {
@@ -50,4 +52,28 @@ class Launches{
 
 }
 
-export{ ImageOfTheDay, Rockets, Astronauts, Launches}
+class RocketHtml extends Rocket{
+    constructor (name, explanation, active, costPerLaunch, firstFlight, flikr_images){
+        super(name, explanation, active, costPerLaunch, firstFlight)
+        this.flikr_images = flikr_images;
+    }
+
+    displayRocketImg() {
+        if (this.flikr_images.length === 0) {
+            return 'assets/istockphoto-614866496-2048x2048.jpg'; 
+        } else {
+            return this.flikr_images[0]
+        }
+    };
+
+/*     Initialize(){
+        const sectionRocket = document.createElement("section");
+        const AddFavorite = document.createElement("button")
+        const RemoveFavorite = document.createElement("button");
+    } */
+
+}
+
+
+
+export{ ImageOfTheDay, Rockets, Astronauts, Launches, Rocket_image}
