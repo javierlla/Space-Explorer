@@ -81,6 +81,14 @@ nav {
     font-size: 16px;
 }
 
+#main-images{
+    justify-content: center;
+}
+
+#main-images img {
+    border-radius: 5px;
+}
+
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     .nav-links {
