@@ -92,6 +92,32 @@ nav {
     margin-right: auto;
 }
 
+#main-content{
+    display: flex;
+    overflow: hidden;
+}
+
+/* Animación para mover las imágenes de izquierda a derecha */
+@keyframes moveLeftToRight {
+    0% {
+      transform: translateX(-100%); 
+    }
+    100% {
+      transform: translateX(100%);  
+    }
+  }
+  
+  /* Estilo para las imágenes */
+  .api-image {
+    width: 200px; 
+    height: auto; 
+    display: inline-block;  
+    margin-right: 20px;  
+    animation: moveLeftToRight 10s linear infinite; 
+    object-fit: cover;  
+  }
+
+
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     .nav-links {
