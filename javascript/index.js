@@ -23,7 +23,6 @@ function createIndexMainDom(imageOTD) {
             title.textContent = 'Welcome to Space Explorer';
     
             const image = document.createElement('img');
-            console.log(imageOTD.url)
             image.src = imageOTD.url;
             image.height = 600;
             image.width = 600;

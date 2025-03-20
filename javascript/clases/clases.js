@@ -1,4 +1,4 @@
-export { Article, Event, Image, Launches, ImageOfTheDay }
+export { Article, Event, Image, Launches, ImageOfTheDay, Rocket, RocketHtml }
 
 class Article {
     constructor(id, title, authors, url ,image_url, news_site, summary, published_at) {
@@ -30,17 +30,55 @@ class Event {
 
 }
 
-class Image{
+class Image {
     constructor(url) {
         this.url = url
     }
 }
 
-class ImageOfTheDay{
+class ImageOfTheDay {
     constructor(date, explanation, title, url) {
         this.date = date
         this.explanation = explanation
         this.title = title
         this.url = url
     }
+}
+
+class Rocket {
+    constructor(name, explanation, active, costPerLaunch, firstFlight
+    ){
+        this.name = name;
+        this.explanation = explanation;
+        this.active = active;
+        this.costPerLaunch = costPerLaunch;
+        this.firstFlight = firstFlight;
+
+
+    }
+
+    displayInfo() {
+        console.log(`Name: ${this.name}`);
+        console.log(`Description: ${this.explanation}`);
+        console.log(`Active?: ${this.active ? "SÃ" : "No"}`);
+        console.log(`Cost per launch: $${this.costPerLaunch}`);
+        console.log(`First flight: ${this.firstFlight}`);
+        console.log("----------------------------------------------------");
+    }
+
+}
+
+class RocketHtml extends Rocket{
+    constructor (name, explanation, active, costPerLaunch, firstFlight, flikr_images){
+        super(name, explanation, active, costPerLaunch, firstFlight)
+        this.flikr_images = flikr_images;
+    }
+
+    displayRocketImg() {
+        if (this.flikr_images.length === 0) {
+            return 'assets/istockphoto-614866496-2048x2048.jpg'; 
+        } else {
+            return this.flikr_images[0]
+        }
+    };
 }

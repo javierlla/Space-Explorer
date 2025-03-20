@@ -8,7 +8,7 @@ async function searchForImages(e) {
     e.preventDefault();
 
     const query = document.getElementById("searchInput").value;
-    
+
     const response = await fetch(`https://images-api.nasa.gov/search?q=${query}`);
     const data = await response.json();
 
@@ -26,7 +26,7 @@ async function searchForImages(e) {
         imageClases.push(newImage);
     }
     document.getElementById("images").innerHTML = "";
-    createImagesDom(imageClases)
+    createImagesDom(imageClases);
 }
 
 function createImagesDom(images){
