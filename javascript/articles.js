@@ -23,7 +23,9 @@ function createMainArticles() {
 
 async function main() {
     const articleClasses = await createArticles();
+
+    console.log(articleClasses);
+
     createMainArticles(articleClasses);
 
-    
 }
