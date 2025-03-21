@@ -1,37 +1,23 @@
 import { Rocket, RocketHtml } from './clases/clases.js';
 
+const image_paths = ["../assets/falcon-1.jpg", "../assets/falcon-heavy.jpg", "../assets/falcon9.avif", "../assets/starship.jpg"]
 const urlRockets = "https://api.spacexdata.com/v4/rockets"
 
 function rocketsDom(rocketsArray) {
     const rockets = document.getElementById("main-rockets");
 
-    const card1 = document.createElement("div");
-    card1.setAttribute('class', 'card1')
-    card1.textContent = rocketsArray[0].name;
-    card1.textContent = rocketsArray[0].explanation;
-
-    console.log(rocketsArray[0]);
-    const card2 = document.createElement("div");
-    card2.setAttribute('class', 'card2')
-    card2.textContent = rocketsArray[1].name;
-    card2.textContent = rocketsArray[1].explanation;
+    const grid = document.createElement("div")
+    grid.setAttribute("class", "rockets-grid")
 
 
-    const card3 = document.createElement("div");
-    card3.setAttribute('class', 'card3');
-    card3.textContent = rocketsArray[2].name;
-    card3.textContent = rocketsArray[2].explanation;
+    rocketsArray.forEach((rocket, index) => {
+      const card = document.createElement("div");
+      card.setAttribute("class", `card card${index + 1}`);
+      card.innerHTML = `<h3>${rocket.name}</h3><p>${rocket.explanation}</p><img src=${image_paths[index]} width=200 height=200>`;
+      grid.appendChild(card);
+    });
 
-
-    const card4 = document.createElement("div");
-    card4.setAttribute('class', 'card4')
-    card4.textContent = rocketsArray[3].name;
-    card4.textContent = rocketsArray[3].explanation;
-
-    rockets.appendChild(card1)
-    rockets.appendChild(card2)
-    rockets.appendChild(card3)
-    rockets.appendChild(card4)
+    rockets.appendChild(grid);
 }
 
 async function fetchData(url)
@@ -63,7 +49,7 @@ async function getRockets()
             rocket.description,
             rocket.active,
             rocket.cost_per_launch, 
-            rocket.first_flight 
+            rocket.first_flight
         )
     );
     return rocketsArray;
@@ -72,6 +58,8 @@ async function getRockets()
 
 async function main() {
     const rocketsArray = await getRockets();
+
+    console.log(rocketsArray[0]);
 
     rocketsDom(rocketsArray);
 }
