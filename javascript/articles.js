@@ -44,6 +44,7 @@ function createMainArticles(articleClasses) {
 
         const link = document.createElement('button');
         const text_in_button = document.createElement('p');
+        text_in_button.setAttribute('class', 'p-button');
         text_in_button.textContent = "Article link";
         link.appendChild(text_in_button);
         link.setAttribute("class", 'btn');

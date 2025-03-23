@@ -162,6 +162,11 @@ p {
   line-height: 1.6;
 }
 
+.p-button {
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
 /* Image styles */
 #main-images {
   display: flex;
@@ -257,7 +262,7 @@ p {
   border: none;
   border-radius: 50px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: bold; 
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(91, 192, 190, 0.4);
   cursor: pointer;
