@@ -1,12 +1,9 @@
-// footer.js
 
-// Asegúrate de que el DOM esté cargado antes de ejecutar el código
 document.addEventListener("DOMContentLoaded", function() {
-    // Función para crear el contenido del footer
-    function createFooter() {
-        const footer = document.getElementById('footer'); // Obtén el elemento <footer> del HTML
 
-        // Crear el texto de derechos de autor
+    function createFooter() {
+        const footer = document.getElementById('footer');
+
         const p = document.createElement('p');
         p.textContent = '© 2025 SpaceExplorer. All rights reserved.';
 
@@ -14,9 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
         socialIconsDiv.classList.add('social-icons');
 
         const socialLinks = [
-            { name: 'Facebook', href: '#' },
-            { name: 'Instagram', href: '#' },
-            { name: 'Twitter', href: '#' }
+            { name: 'Github', href: 'https://github.com/Otxobot' },
+            { name: 'Linkedin', href: 'https://www.linkedin.com/in/aiert-basante-b2002431b/' }
         ];
 
         socialLinks.forEach(link => {

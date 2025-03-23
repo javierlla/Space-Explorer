@@ -1,4 +1,4 @@
-import { Article, Event, Image, Launches, ImageOfTheDay} from './clases/clases.js';
+import { Article, Image, Launches, ImageOfTheDay} from './clases/clases.js';
 
 const API_KEY = 'iHU6CXT2jGDVr9hMpRdhV1Bgn7BJiShISxKrqBGv';
 
@@ -15,29 +15,24 @@ async function getImageOfTheDay() {
 }
 
 function createIndexMainDom(imageOTD) {
+    const main = document.getElementById('main')
 
-        function createTitle(){
-            const main = document.getElementById('main')
-    
-            const title = document.createElement('h1');
-            title.textContent = 'Welcome to Space Explorer';
-    
-            const image = document.createElement('img');
-            image.src = imageOTD.url;
-            image.height = 600;
-            image.width = 600;
-    
-            main.appendChild(title);
-            main.appendChild(image);
-        }
-    
-        createTitle();
+    const title = document.createElement('h1');
+    title.textContent = 'Welcome to Space Explorer';
+
+    const image = document.createElement('img');
+    image.src = imageOTD.url;
+    image.height = 600;
+    image.width = 600;
+
+    main.appendChild(title);
+    main.appendChild(image);
 }
 
-async function main(){
+async function main() {
+    getImageOfTheDay();
     const imageOTD = await getImageOfTheDay();
     createIndexMainDom(imageOTD);
-    
 }
 
 main();

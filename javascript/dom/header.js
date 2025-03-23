@@ -2,6 +2,12 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("header").innerHTML = `
+    <div class="logo">SpaceExplorer</div>
+    <button class="menu-toggle" aria-label="Toggle navigation menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </button>
     <nav>
         <ul class="nav-links">
             <li><a href="../html/index.html">Home</a></li>
@@ -12,18 +18,24 @@ document.addEventListener("DOMContentLoaded", function() {
     </nav>
 `;
 
-    function createHeader() {
-
-        const logo = document.createElement('div');
-        logo.classList.add('logo');
-        logo.textContent = 'SpaceExplorer';
-
-    }
-
-    function toggleMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    menuToggle.addEventListener("click", function() {
         const navLinks = document.querySelector('.nav-links');
         navLinks.classList.toggle('show');
-    }
+    })
 
-    createHeader();
+    // function createHeader() {
+
+    //     const logo = document.createElement('div');
+    //     logo.classList.add('logo');
+    //     logo.textContent = 'SpaceExplorer';
+
+    // }
+
+    // function toggleMenu() {
+    //     const navLinks = document.querySelector('.nav-links');
+    //     navLinks.classList.toggle('show');
+    // }
+
+    // createHeader();
 }); 

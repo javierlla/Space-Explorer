@@ -1,4 +1,4 @@
-import { Article, Event, Image, Launches, ImageOfTheDay} from './clases/clases.js';
+import { Article, Image, Launches, ImageOfTheDay} from './clases/clases.js';
 
 document.getElementById("searchForm").addEventListener("submit", function(event) {
     searchForImages(event);
@@ -40,13 +40,3 @@ function createImagesDom(images){
         main_images.appendChild(image);
     }
 }
-
-// async function main() {
-    
-
-//     const images = await searchForImages();
-//     createImagesDom(images);
-
-// }
-
-// main();

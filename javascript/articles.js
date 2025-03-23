@@ -17,15 +17,28 @@ async function createArticles() {
     return articlesToClass;
 }
 
-function createMainArticles() {
+function createMainArticles(articleClasses) {
+    const articles = document.getElementById("articles");
 
+    for (let i = 0; i < articleClasses.length; i++)
+    {
+        articleClasses[i].print_everything();
+        const article = document.createElement('div');
+        const article_title = document.createElement('h3');
+        const authors = document.createElement('p');
+        article_title.textContent = articleClasses[i].title;
+        authors.textContent = articleClasses[i].authors;
+        article.appendChild(article_title);
+        article.appendChild(authors);
+        articles.appendChild(article);
+    }
 }
 
 async function main() {
     const articleClasses = await createArticles();
 
-    console.log(articleClasses);
-
     createMainArticles(articleClasses);
 
 }
+
+main();

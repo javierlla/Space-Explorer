@@ -1,4 +1,4 @@
-export { Article, Event, Image, Launches, ImageOfTheDay, Rocket, RocketHtml }
+export { Article, Image, Launches, ImageOfTheDay, Rocket, RocketHtml }
 
 class Article {
     constructor(id, title, authors, url ,image_url, news_site, summary, published_at) {
@@ -23,10 +23,6 @@ class Article {
 }
 
 class Launches {
-
-}
-
-class Event {
 
 }
 
