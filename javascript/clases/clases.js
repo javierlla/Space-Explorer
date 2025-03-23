@@ -1,13 +1,12 @@
 export { Article, Image, Launches, ImageOfTheDay, Rocket, RocketHtml }
 
 class Article {
-    constructor(id, title, authors, url ,image_url, news_site, summary, published_at) {
+    constructor(id, title, authors, url ,image_url, summary, published_at) {
         this.id = id
         this.title = title
         this.authors = authors
         this.url = url
         this.image_url = image_url
-        this.news_site = news_site
         this.summary = summary
         this.published_at = published_at
     }
@@ -19,6 +18,7 @@ class Article {
         console.log(`Authors: ${this.authors || "N/A"}`);
         console.log(`URL: ${this.url}`);
         console.log(`Image URL: ${this.image_url}`);
+        console.log(`Summary: ${this.summary}`);
     }
 }
 
