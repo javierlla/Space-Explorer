@@ -1,14 +1,40 @@
 import { Article, Image, Launches, ImageOfTheDay} from './clases/clases.js';
 
-document.getElementById("searchForm").addEventListener("submit", function(event) {
-    searchForImages(event);
-});
+// function createTitle() {
+//     const main = document.getElementById("main-images");
+//     const title = document.createElement("h1");
+//     title.textContent = "Search for Images in the NASA API!";
+//     main.appendChild(title);
+// }
 
-async function searchForImages(e) {
-    e.preventDefault();
+// document.getElementById("searchForm").addEventListener("submit", function(event) {
+//     searchForImages(event);
+//     // createImagesDom()
+// });
 
-    const query = document.getElementById("searchInput").value;
+async function searchForImages() {
+    // e.preventDefault();
 
+    // const query = document.getElementById("searchInput").value;
+    const mainContent = document.getElementById('main-images');
+    
+    const form = document.createElement("form");
+    form.setAttribute("id", "searchForm");
+
+    const input = document.createElement("input");
+    input.type = "text";
+    input.setAttribute("id", "searchInput");
+    input.placeholder = "search images..."
+
+    const button = document.createElement("button");
+    button.setAttribute("id", "button-images");
+    button.type = "submit";
+    button.textContent = "Search";
+
+    form.appendChild(input);
+    form.appendChild(button);
+
+    const query = "space";
     const response = await fetch(`https://images-api.nasa.gov/search?q=${query}`);
     const data = await response.json();
 
@@ -25,18 +51,83 @@ async function searchForImages(e) {
         
         imageClases.push(newImage);
     }
-    document.getElementById("images").innerHTML = "";
+    // document.getElementById("images").innerHTML = "";
+    mainContent.appendChild(form);
     createImagesDom(imageClases);
 }
 
-function createImagesDom(images){
+function createImagesDom(images) {
+    const mainContent = document.getElementById('main-images');
 
-    const main_images = document.getElementById("images");
-    for (let i = 0; i < images.length; i++) {
-        const image = document.createElement('img');
-        image.src = images[i].url;
-        image.height = 300;
-        image.width = 300;
-        main_images.appendChild(image);
+    // Si no se encuentra el contenedor, mostramos un error
+    if (!mainContent) {
+        console.error('Contenedor principal no encontrado');
+        return;
     }
+
+    const form = document.createElement("form");
+    form.setAttribute("id", "searchForm");
+
+    const input = document.createElement("input");
+    input.type = "text";
+    input.setAttribute("id", "searchInput");
+    input.placeholder = "search images..."
+
+    const button = document.createElement("button");
+    button.setAttribute("id", "button-images");
+    button.type = "submit";
+    button.textContent = "Search";
+
+    form.appendChild(input);
+    form.appendChild(button);
+    
+
+    // Limpiar contenido previo
+    mainContent.innerHTML = ''; // Limpiar cualquier imagen previa
+
+    // Crear el contenedor de imágenes
+    const imagesContainerWrapper = document.createElement('div');
+    imagesContainerWrapper.classList.add('images-container-wrapper');  // Contenedor principal
+
+    const imagesContainer = document.createElement('div');
+    imagesContainer.classList.add('images-container');  // Contenedor de las imágenes
+
+    // Iterar sobre las imágenes y agregarlas al DOM
+    images.forEach(image => {
+        const imgElement = document.createElement('img');
+        imgElement.src = image.url;
+        imgElement.alt = "Imagen del espacio";
+        imgElement.classList.add('api-image');
+        imagesContainer.appendChild(imgElement);
+    });
+
+    // Duplicar el contenedor de imágenes para crear el bucle continuo
+    const duplicatedImagesContainer = imagesContainer.cloneNode(true);
+
+    // Agregamos ambas partes (original y duplicada) al contenedor principal
+    imagesContainerWrapper.appendChild(imagesContainer);
+    imagesContainerWrapper.appendChild(duplicatedImagesContainer);
+
+    // Agregar el contenedor de las imágenes al main
+    mainContent.appendChild(imagesContainerWrapper);
+
 }
+
+function main()
+{
+    searchForImages();
+}
+
+main();
+
+// function createImagesDom(images){
+
+//     const main_images = document.getElementById("images");
+//     for (let i = 0; i < images.length; i++) {
+//         const image = document.createElement('img');
+//         image.src = images[i].url;
+//         image.height = 300;
+//         image.width = 300;
+//         main_images.appendChild(image);
+//     }
+// }
