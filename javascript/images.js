@@ -5,13 +5,13 @@ async function searchForImages(query) {
     const data = await response.json();
 
     const items = data.collection.items;
-    
+
     const imageLinks = items
         .map(item => item.links?.[0]?.href)
         .filter(link => link);
 
     let imageClases = [];
-    
+
     for (let i = 0; i < imageLinks.length; i++) {
         let newImage = new Image(imageLinks[i]);
         imageClases.push(newImage);
@@ -21,12 +21,15 @@ async function searchForImages(query) {
 
 function createImagesDom(images) {
     const mainContent = document.getElementById('main-images');
-    
+
     // Si no se encuentra el contenedor, mostramos un error
     if (!mainContent) {
         console.error('Contenedor principal no encontrado');
         return;
     }
+
+    // Limpiar contenido previo
+    mainContent.innerHTML = ''; // Limpiar cualquier imagen previa
 
     // Crear el contenedor de imágenes
     const imagesContainerWrapper = document.createElement('div');
@@ -40,12 +43,12 @@ function createImagesDom(images) {
         const imgElement = document.createElement('img');
         imgElement.src = image.url;
         imgElement.alt = "Imagen del espacio";
-        imgElement.classList.add('api-image');  
+        imgElement.classList.add('api-image');
         imagesContainer.appendChild(imgElement);
     });
 
     // Duplicar el contenedor de imágenes para crear el bucle continuo
-    const duplicatedImagesContainer = imagesContainer.cloneNode(true); 
+    const duplicatedImagesContainer = imagesContainer.cloneNode(true);
 
     // Agregamos ambas partes (original y duplicada) al contenedor principal
     imagesContainerWrapper.appendChild(imagesContainer);
@@ -56,8 +59,9 @@ function createImagesDom(images) {
 }
 
 async function main() {
-    const images = await searchForImages("space");
-    createImagesDom(images);
+    // Realizar búsqueda inicial con el valor predeterminado ("space")
+    const images = await searchForImages('space');
+    createImagesDom(images); // Crear las imágenes en el DOM
 }
 
 main();
