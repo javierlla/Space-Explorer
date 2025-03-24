@@ -1,11 +1,10 @@
 
-
 class ImageOfTheDay{
-    constructor(date, explination, hdurl, title, url)
+    constructor(date, title, explanation, hdurl, url)
     {
         this.date = date;
         this.title = title;
-        this.explination = explination;
+        this.explanation = explanation;
         this.hdurl = hdurl;
         this.url = url;
     }
@@ -18,7 +17,8 @@ class ImageOfTheDay{
     }
 }
 
-class Rockets{
+
+/* class Rockets{
     constructor(name, explination, active, costPerLaunch, firstFlight
     ){
         this.name = name;
@@ -38,6 +38,46 @@ class Rockets{
     }
 
 }
+ */
+
+class Rockets {
+    constructor(name, explanation, active, costPerLaunch, firstFlight) {
+        this.name = name;
+        this.explanation = explanation;
+        this.active = active;
+        this.costPerLaunch = costPerLaunch;
+        this.firstFlight = firstFlight;
+    }
+
+    createHTML() {
+        return `
+            <div class="rocket-card">
+                <h2>${this.name}</h2>
+                <p>${this.explanation}</p>
+                <p><strong>Activo:</strong> ${this.active ? "Sí" : "No"}</p>
+                <p><strong>Costo por lanzamiento:</strong> $${this.costPerLaunch}</p>
+                <p><strong>Primer vuelo:</strong> ${this.firstFlight}</p>
+            </div>
+        `;
+    }
+}
+
+class Launches {
+    constructor(flightNumber, name, dateUTC, success) {
+        this.flightNumber = flightNumber;
+        this.name = name;
+        this.dateUTC = dateUTC;
+        this.success = success;
+    }
+
+    displayInfo() {
+        console.log(`Número de vuelo: ${this.flightNumber}`);
+        console.log(`Nombre de la misión: ${this.name}`);
+        console.log(`Fecha de lanzamiento (UTC): ${this.dateUTC}`);
+        console.log(`¿Lanzamiento exitoso?: ${this.success ? "Sí" : "No"}`);
+        console.log("----------------------------------------------------");
+    }
+}
 
 class Astronauts{
     constructor(){
@@ -45,9 +85,4 @@ class Astronauts{
     }
 
 }
-
-class Launches{
-
-}
-
 export{ ImageOfTheDay, Rockets, Astronauts, Launches}
