@@ -12,48 +12,63 @@ import { Article, Image, Launches, ImageOfTheDay} from './clases/clases.js';
 //     // createImagesDom()
 // });
 
-async function searchForImages() {
+async function searchForImages(query = "space") {
     // e.preventDefault();
 
     // const query = document.getElementById("searchInput").value;
     const mainContent = document.getElementById('main-images');
-    
-    const form = document.createElement("form");
-    form.setAttribute("id", "searchForm");
+    console.log("entra aqui")
 
-    const input = document.createElement("input");
-    input.type = "text";
-    input.setAttribute("id", "searchInput");
-    input.placeholder = "search images..."
+    const form = document.getElementById("searchForm");
+    if (!form )
+        {
+        console.log("creating form ")
+        const form = document.createElement("form");
+        form.setAttribute("id", "searchForm");
 
-    const button = document.createElement("button");
-    button.setAttribute("id", "button-images");
-    button.type = "submit";
-    button.textContent = "Search";
+        const input = document.createElement("input");
+        input.type = "text";
+        input.setAttribute("id", "searchInput");
+        input.placeholder = "Search images...";
 
-    form.appendChild(input);
-    form.appendChild(button);
+        const button = document.createElement("button");
+        button.setAttribute("id", "button-images");
+        button.type = "submit";
+        button.textContent = "Search";
 
-    const query = "space";
-    const response = await fetch(`https://images-api.nasa.gov/search?q=${query}`);
-    const data = await response.json();
+        form.appendChild(input);
+        form.appendChild(button);
+        mainContent.appendChild(form);
 
-    const items = data.collection.items;
-        
-    const imageLinks = items
-    .map(item => item.links?.[0]?.href)
-    .filter(link => link);
-
-    let imageClases = [];
-    
-    for (let i = 0; i < imageLinks.length; i++) {
-        let newImage = new Image(imageLinks[i]);
-        
-        imageClases.push(newImage);
+        // Add event listener for user input
+        form.addEventListener("submit", async function (event) {
+            event.preventDefault();
+            const userQuery = input.value.trim();
+            if (userQuery) {
+                await searchForImages(userQuery);
+            }
+        });
     }
-    // document.getElementById("images").innerHTML = "";
-    mainContent.appendChild(form);
-    createImagesDom(imageClases);
+
+        const response = await fetch(`https://images-api.nasa.gov/search?q=${query}`);
+        const data = await response.json();
+    
+        const items = data.collection.items;
+            
+        const imageLinks = items
+        .map(item => item.links?.[0]?.href)
+        .filter(link => link);
+    
+        let imageClases = [];
+        
+        for (let i = 0; i < imageLinks.length; i++) {
+            let newImage = new Image(imageLinks[i]);
+            
+            imageClases.push(newImage);
+        }
+        // mainContent.appendChild(form);
+        createImagesDom(imageClases);
+
 }
 
 function createImagesDom(images) {
@@ -64,23 +79,6 @@ function createImagesDom(images) {
         console.error('Contenedor principal no encontrado');
         return;
     }
-
-    const form = document.createElement("form");
-    form.setAttribute("id", "searchForm");
-
-    const input = document.createElement("input");
-    input.type = "text";
-    input.setAttribute("id", "searchInput");
-    input.placeholder = "search images..."
-
-    const button = document.createElement("button");
-    button.setAttribute("id", "button-images");
-    button.type = "submit";
-    button.textContent = "Search";
-
-    form.appendChild(input);
-    form.appendChild(button);
-    
 
     // Limpiar contenido previo
     mainContent.innerHTML = ''; // Limpiar cualquier imagen previa
@@ -113,9 +111,9 @@ function createImagesDom(images) {
 
 }
 
-function main()
+async function main()
 {
-    searchForImages();
+    await searchForImages();
 }
 
 main();
