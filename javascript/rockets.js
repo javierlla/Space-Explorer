@@ -5,6 +5,8 @@ const urlRockets = "https://api.spacexdata.com/v4/rockets"
 
 function rocketsDom(rocketsArray) {
     const rockets = document.getElementById("main-rockets");
+    const title = document.createElement("h1");
+    title.textContent = "Rockets from SpaceX API";
 
     const grid = document.createElement("div")
     grid.setAttribute("class", "rockets-grid")
@@ -17,6 +19,7 @@ function rocketsDom(rocketsArray) {
       grid.appendChild(card);
     });
 
+    rockets.appendChild(title);
     rockets.appendChild(grid);
 }
 
