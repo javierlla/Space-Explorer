@@ -111,9 +111,9 @@ nav {
 
 .menu-toggle {
   display: none;
-  font-size: 24px;
+  /* font-size: 24px;
   cursor: pointer;
-  color: var(--space-white);
+  color: var(--space-white); */
 }
 
 /* .social-icons {
@@ -297,7 +297,6 @@ footer .footer-links {
 footer .footer-links a {
   color: var(--space-white);
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
 footer .footer-links a:hover {
@@ -312,6 +311,36 @@ footer .footer-links a:hover {
   border-radius: 3px;
 }
 
+form {
+  border-radius: 10px;
+}
+
+#button-images {
+  display: inline-block;
+  padding: 10px 25px;
+  background: linear-gradient(45deg, var(--space-medium-blue), var(--space-bright-blue));
+  color: var(--space-white);
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold; 
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(91, 192, 190, 0.4);
+  cursor: pointer;
+}
+
+#button-images:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(91, 192, 190, 0.6);
+  background: linear-gradient(45deg, var(--space-bright-blue), var(--space-glow));
+}
+
+#searchInput {
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px white;
+}
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
