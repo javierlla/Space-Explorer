@@ -349,7 +349,7 @@ form {
     flex-direction: column;
     position: absolute;
     top: 70px;
-    right: 20px;
+    right: 12em; /*aqui*/
     background-color: rgba(28, 37, 65, 0.95);
     backdrop-filter: blur(10px);
     width: 200px;
@@ -377,7 +377,10 @@ form {
   }
   
   .menu-toggle {
-    display: block;
+    display: flex; /*aqui*/
+    flex-direction: column;
+    margin-left: 15em;
+    margin-right: auto;
   }
 
   h1 {
@@ -386,6 +389,10 @@ form {
 
   h2 {
     font-size: 1.8rem;
+  }
+
+  img { /*aqui*/
+    width: 100%;
   }
 }
 
