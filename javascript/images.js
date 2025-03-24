@@ -39,6 +39,7 @@ async function searchForImages(query = "space") {
         form.appendChild(input);
         form.appendChild(button);
         mainContent.appendChild(form);
+        console.log("deberia aver creado el form pero no lo hace")
 
         // Add event listener for user input
         form.addEventListener("submit", async function (event) {
@@ -74,16 +75,16 @@ async function searchForImages(query = "space") {
 function createImagesDom(images) {
     const mainContent = document.getElementById('main-images');
 
-    // Si no se encuentra el contenedor, mostramos un error
     if (!mainContent) {
         console.error('Contenedor principal no encontrado');
         return;
     }
 
-    // Limpiar contenido previo
-    mainContent.innerHTML = ''; // Limpiar cualquier imagen previa
+    // mainContent.innerHTML = ''; // Limpiar cualquier imagen previa
 
-    // Crear el contenedor de imágenes
+    const previousContainers = mainContent.querySelectorAll('.images-container-wrapper');
+    previousContainers.forEach(container => container.remove());
+
     const imagesContainerWrapper = document.createElement('div');
     imagesContainerWrapper.classList.add('images-container-wrapper');  // Contenedor principal
 
