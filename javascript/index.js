@@ -20,13 +20,28 @@ function createIndexMainDom(imageOTD) {
     const title = document.createElement('h1');
     title.textContent = 'Welcome to Space Explorer';
 
+    const title2 = document.createElement('h2');
+    title2.textContent = "This is the image of the day from NASA's API!"
+
     const image = document.createElement('img');
     image.src = imageOTD.url;
-    image.height = 600;
-    image.width = 600;
+
+    const card = document.createElement("div");
+    card.setAttribute("class", 'card-article');
+
+    const explanation = document.createElement('p');
+    explanation.setAttribute("class", "pIOTD");
+    explanation.textContent = imageOTD.explanation;
+
+    card.appendChild(explanation);
+
+    const api_title = document.createElement('h2');
+    api_title.textContent = 
 
     main.appendChild(title);
+    main.appendChild(title2);
     main.appendChild(image);
+    // main.appendChild(card);
 }
 
 async function main() {
