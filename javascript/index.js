@@ -18,12 +18,14 @@ function createIndexMainDom(imageOTD) {
     const main = document.getElementById('main');
 
     const title = document.createElement('h1');
+    title.setAttribute("class", "title-index");
     title.textContent = 'Welcome to Space Explorer';
 
     const title2 = document.createElement('h2');
     title2.textContent = "This is the image of the day from NASA's API!"
 
     const image = document.createElement('img');
+    image.setAttribute("class", "IOTD");
     image.src = imageOTD.url;
 
     const card = document.createElement("div");

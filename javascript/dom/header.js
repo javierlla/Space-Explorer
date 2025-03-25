@@ -1,8 +1,9 @@
-// header.js
-
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("header").innerHTML = `
-    <div class="logo">SpaceExplorer</div>
+    <div class="logo">
+        <img id="logo-header" src="../assets/NASA.png" alt="SpaceExplorer Logo">
+        <span>SpaceExplorer</span>
+    </div>
     <button class="menu-toggle" aria-label="Toggle navigation menu">
         <div class="bar"></div>
         <div class="bar"></div>
@@ -23,20 +24,5 @@ document.addEventListener("DOMContentLoaded", function() {
     menuToggle.addEventListener("click", function() {
         const navLinks = document.querySelector('.nav-links');
         navLinks.classList.toggle('show');
-    })
-
-    // function createHeader() {
-
-    //     const logo = document.createElement('div');
-    //     logo.classList.add('logo');
-    //     logo.textContent = 'SpaceExplorer';
-
-    // }
-
-    // function toggleMenu() {
-    //     const navLinks = document.querySelector('.nav-links');
-    //     navLinks.classList.toggle('show');
-    // }
-
-    // createHeader();
-}); 
+    });
+});
