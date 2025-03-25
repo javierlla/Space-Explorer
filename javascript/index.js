@@ -15,7 +15,7 @@ async function getImageOfTheDay() {
 }
 
 function createIndexMainDom(imageOTD) {
-    const main = document.getElementById('main')
+    const main = document.getElementById('main');
 
     const title = document.createElement('h1');
     title.textContent = 'Welcome to Space Explorer';
