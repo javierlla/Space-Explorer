@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favoritos</title>
+    <link rel="stylesheet" href="../css/style.css"">
+</head>
+<body>
+     <header id="header"></header>
+
+     <main>
+    <div id="favorites-container" class="container">
+        <h1>Mis Artículos Favoritos</h1>
+        <div id="favorites"></div>
+    </div>
+</main>
+    <footer id="footer"></footer>
+
+    <script defer type="module" src="../javascript/favorites.js"></script>
+    <script defer type="module" src="../javascript/dom/header.js"></script>
+    <script defer type="module" src="../javascript/dom/footer.js"></script>
+    <script>function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
+        }</script>
+    </body>
+
+</html>
